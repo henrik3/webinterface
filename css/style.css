@@ -1,0 +1,31 @@
+.chart-container {
+  position: absolute;
+  width: 60%;
+  height: 400px;
+  right: 50px;
+  top: 50px;
+  margin: 0 auto;
+}
+
+.value-container {
+    position: absolute;
+    width: 30%;
+    height: 400px;
+    left: 10px;
+    top: 50px;
+    margin: 0 auto;
+}
+
+.header {
+    background: #fff;
+    height: 50px;
+    width: 100%;
+    display: flex;
+}
+
+.footer {
+    background: #fff;
+    height: 20px;
+    width: 100%;
+    display: flex;
+}

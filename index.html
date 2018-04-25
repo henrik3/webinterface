@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sensor Values MQTT</title>
+
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Include JavaScript classes after which order they are used in -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/chart.min.js"></script>
+    <!-- Eclipse Paho library for MQTT -->
+    <script src="js/mqttws31.js"></script>
+
+    <script src="js/browserMqtt.js"></script>
+    <script src="js/mqttConn.js"></script>
+    <script src="js/lineGraph.js"></script>
+
+<!-- Create layout for the table for real time values -->
+<style>
+table {
+  fontSize: 18,
+  fontColor: "#111",
+  border-collapse: collapse;
+  width: 100%;
+}
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+</style>
+</head>
+
+<body>
+  <!-- Start connection to the MQTT broker by running init function -->
+  <body onload="init();">
+
+  <!-- Include the RT-value container and create a table inside -->
+  <div class="value-container">
+    <h2>Current values</h2>
+    <table>
+      <tr>
+        <th>Temperature</th>
+        <th>Humidity</th>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Include the chart container and insert the line graph -->
+  <div class="chart-container">
+    <canvas>Chart goes here</canvas>
+  </div>
+
+
+</body>
+</html>
