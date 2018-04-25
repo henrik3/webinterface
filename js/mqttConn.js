@@ -1,7 +1,7 @@
 // This class connects to the MQTT broker
 
 var broker = "m23.cloudmqtt.com";
-var port = 35779; // use port for websockets
+var port = ; // use port for websockets
 var topic = "lubcos/#"; // # is wildcard
 var topicArray = new Array(); // array to hold incoming topics
 
@@ -15,8 +15,8 @@ var client = new Paho.MQTT.Client(broker, port, "clientID");
 // login options
 var options = {
     useSSL: true,
-    userName: "fmkleldp",
-    password: "xElaY3QWFwBy",
+    userName: "",
+    password: "",
     onSuccess: onConnect,
     onFailure: doFail
 }
