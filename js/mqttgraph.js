@@ -60,50 +60,28 @@ function onConnectionLost(responseObject) {
 // mqttTopics.
 
 function onMessageArrived(message) {
+  // print out topic and data to console
+  console.log("Topic: " + message.destinationName, ' | ', "Data: " + message.payloadString);
+
+  // check if it is a new topic, if not, add to array
+  if (topicArray.indexOf(message.destinationName) < 0){
+    // add new topic to array
+    topicArray.push(message.destinationName);
+    // get the index number
+    var y = topicArray.indexOf(message.destinationName);
+    console.log("Topic Array: " + topicArray + " | " + "Index number: " + y);
+
+    // create new dadta series for the chart
+    var newdata = {
+      id: y,
+      name: message.destinationName,
+      data: []
+    };
+    // add data to chart
+    myChart.update(newdata);
+  }
 
 
-
-  if (mqttTopics.indexOf(message.destinationName) < 0){
-      // push incoming topics to mqttTopics array
-      mqttTopics.push(message.destinationName);
-      var y = mqttTopics.indexOf(message.destinationName);
-
-
-      if (message.destinationName == "lubcos/temp") {
-        document.getElementById("temperature").innerHTML = message.payloadString + " °C";
-      } else if (message.destinationName == "lubcos/humi") {
-      document.getElementById("humidity").innerHTML = message.payloadString + " %";
-      } else {
-        console.log("No messages");
-      }
-      console.log("Topic: " + message.destinationName + "\nValue: " + message.payloadString);
-    }
-
-
-
-
-/*
-
-      //create new data series for the chart
-    var newseries = {
-              id: y,
-              name: message.destinationName,
-              data: []
-              };
-
-    myChart.update(newseries);
-
-      };
-
-  var y = mqttTopics.indexOf(message.destinationName);
-
-  var thenum = message.payloadString.replace( /^\D+/g, '');
-  var plotMqtt = [time, Number(thenum)];
-
-  if (isNumber(thenum)) {
-    console.log('is a proper number, will send to chart.')
-    plot(plotMqtt, y);
-  };*/
 };
 
 
@@ -126,13 +104,10 @@ function init() {
 
 function plot(point, chartno) {
   console.log(point);
-
-      var series = myChart.series[0],
-
-          shift = series.data.length > 200;
+    var series = myChart.newData[0],
+    shift = newData.data.length > 200;
 
       myChart.update[chartno].addPoint(point, true, shift);
-
 };
 
 // ************************************************************************ //
@@ -153,6 +128,21 @@ var graphOptions = {
             fontColor: "#333",
             fontSize: 16
         }
+    },
+    scales: {
+      xAxis: [{
+        type: 'realtime', // x axis will scroll from right to left
+        text: 'Time',
+        margin: 30
+      }],
+      yAxis: [{
+        minPadding: 0.2,
+        maxPadding: 0.2,
+        title: {
+          text: 'Temp °C / Humidity %',
+            margin: 80
+        }
+      }]
     }
 };
 
