@@ -6,14 +6,19 @@
     <link href="css/style.css" rel="stylesheet">
 
     <!-- Include JavaScript classes after which order they are used in -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/chart.min.js"></script>
-    <!-- Eclipse Paho library for MQTT -->
-    <script src="js/mqttws31.js"></script>
-    <!-- Script for including time in graph -->
-    <script src="js/moment.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-    <script src="js/mqttGraph.js"></script>
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <!-- <script src="js/chart.min.js"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+    <!-- Eclipse Paho library for MQTT -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+    <!-- <script src="js/mqttws31.js"></script>  -->
+
+    <script src="js/mqttgraph.js"></script>
 
 <!-- Create layout for the table for real time values -->
 <style>
@@ -37,11 +42,11 @@ table {
 
   <!-- Include the RT-value container and create a table inside -->
   <div class="value-container">
-    <h2>Current values</h2>
+    <h2><font face="Verdana">Current values</font></h2>
     <table>
       <tr>
-        <th>Temperature</th>
-        <th>Humidity</th>
+        <th><font face="Verdana">Temperature</font></th>
+        <th><font face="Verdana">Humidity</font></th>
       </tr>
       <tr>
         <td id="temperature">temperature</td>
@@ -53,9 +58,7 @@ table {
   <!-- Include the chart container and insert the line graph -->
   <div class="chart-container">
     <canvas>Chart goes here</canvas>
-    <input type="button" value="Add Data" onclick="addData()">
   </div>
-
 
 </body>
 </html>
