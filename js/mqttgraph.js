@@ -136,8 +136,8 @@ var graphOptions = {
         margin: 30
       }],
       yAxis: [{
-        minPadding: 0.2,
-        maxPadding: 0.2,
+      //  minPadding: 0.2,
+      //  maxPadding: 0.2,
         title: {
           text: 'Temp °C / Humidity %',
             margin: 80
@@ -166,7 +166,7 @@ var graphOptions = {
 
    myChart = new Chart(ctx, {
      type: 'line',
-     data: chartData,
+     data: topicArray,
      options: graphOptions
    });
 
